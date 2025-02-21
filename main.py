@@ -1,39 +1,6 @@
 '''
-    Задачи:
-    - добавить кнопку выбрать директорию
-        - считывать директорию
-        - производить поиск по всем файлам с расширением .jpg, выводить для каждого файла информацию: 
-        Найдены/не найдены сигнатуры. Файл содержит/не содержит exif. Содержит файл записи (в секции комментариев, в начале 
-        или после маркера конца файла). В конце выводить на экран и в консоль итоговую статистику: Найдены сигнатуры в N файлах: 
-        image.jpg - camouflage,
-        или сигнатуры в файлах не найдены
-
-    - выложить на гитхаб 
-    
-    - добавить проверку exif тегов
-    Признаки подозрительных exif тегов:
-    1) в текстовом теге - все цифры  isnumeric()
-    2) в числовом - наличие символов 
-    3) невозможное значение или выход за пределы реальных значений 
-    4) длина значения тега больше 50 символов 
-    5) неизвестный id exif тега 
-    вывод списка подозрительных тегов со значениями
-    6) проверить на реальных фото с тегами
-    Еще признаки:
-    + размер больше 50мб 
-    +  несоответствие заявленного расширения реальному 
-    - составить словарь limits для целочисленных тегов и проверять каждый тег выходит ли он за рамки
-    - составить словарь options для тегов которые имеют фиксированный набор возможных значений
-    - определить секторы(маркеры), которые хранят свою длину в следующих 2-х байтах
-    # Keep reading markers and the chunk data until we reach
-    # the 'Start of Scan' marker (ffda) 
-    - добавить возможность выбирать какие режимы проверки внедрять в отчет
-    - добавить режим службы, чтобы программа запущенная в фоновом режиме проводила анализ выбранной директории 
-    и составляла отчет по расписанию
-    и в конфигурационном файле сохраняла бы режимы и даты проверок 
-    - автоматизировать метод слепого стегоанализа(пользователь вводит 2 контейнера, затем 4 файла со стегами)
-
-
+    Author: Dimetriy Volkov
+    Group: b21-502, MEPhI
 '''
 from tkinter import * 
 from tkinter.filedialog import askopenfilename
@@ -322,13 +289,13 @@ def choose_object(object_type):
     while object_path is None:
         print(f"Выберите {object_type}:")
         if object_type == "файл":
-            object_path = filedialog.askdirectory()
-        elif object_type == "каталог":
             object_path = filedialog.askopenfilename()
+        elif object_type == "каталог":
+            object_path = filedialog.askdirectory()
         if object_path:
             user_choice = None
             while user_choice is None:
-                print(f'Выбран {object_type}: {user_choice}.\nПодтвердить?\n"1" - Да\n"0" - Выбрать заново')
+                print(f'Выбран {object_type}: {object_path}.\nПодтвердить?\n"1" - Да\n"0" - Выбрать заново')
                 user_input = input()
                 if user_input == "1":
                     return object_path
@@ -494,7 +461,7 @@ def add_schedule():
     parser.read('settings.ini')
     if not(parser.has_section("Schedules")):
         parser.add_section("Schedules")
-    schedules_dict[object_path] = f"{frequency}_{",".join(modes)}"
+    schedules_dict[object_path] = f"{frequency}_{(','.join(modes))}"
     parser.set('Schedules', object_path, schedules_dict[object_path])
     with open('settings.ini', 'w') as configfile:
         parser.write(configfile)
@@ -776,7 +743,7 @@ def start_schedules():
 
 def main():
     import_signatures()
-    import_schedules()
+    #import_schedules()
     start_schedules()
 
     mode = -1
@@ -795,4 +762,5 @@ def main():
         print("Завершаю работу")
 
 if __name__ == '__main__':
-    test_performance()
+    #test_performance()
+    main()
