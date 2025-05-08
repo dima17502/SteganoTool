@@ -1,6 +1,6 @@
 '''
-    Author: Dimetriy Volkov
-    Group: b21-502, MEPhI
+   Author: Dimetriy Volkov
+   Group: b21-502
 '''
 from tkinter import * 
 from tkinter.filedialog import askopenfilename
@@ -10,6 +10,8 @@ import base64
 from tkinter import ttk 
 from exif import Image
 import os
+import struct
+import pickle
 from os.path import isfile, join, basename
 import imghdr
 import json
@@ -225,7 +227,30 @@ def ask_and_save_signatures():
             new_config.write(configfile)
 
 
-
+def get_statistics(filepath, attributes='all',stat_d = {}):
+    if os.path.isdir(filepath):
+        stat_mat = []
+        i = 0 
+        for filename in os.listdir(filepath):
+            print(i)
+            lsb_list = get_lsb_from_file(filepath+"/"+ filename)
+            features = get_features_vector_from_lsb(lsb_list, attributes)
+            stat_mat.append(features)
+            #stat_mat[i].insert(0,filename)
+            if filename in stat_d:
+                stat_d[filename].append(features)
+            else:
+                stat_d[filename] = [features]
+            i += 1
+        with open('stat_vectors.py', "w") as f:
+            file_input = str(stat_mat).replace('],','],\n\t')
+            print(file_input, file=f)
+        #print(stat_mat)
+        return stat_mat
+    else:
+        lsb_list = get_lsb_from_file(filepath)
+        return (get_features_vector_from_lsb(lsb_list,attributes=['max_0_len','max_1_len']))
+    
 
 def start_gui():
     root['bg'] = '#285078'
@@ -251,7 +276,7 @@ def start_console():
     user_choice = None
     while user_choice is None:
         print("\nВыберите дальнейшее действие:")
-        print('"1" - Провести стегоанализ файла формата JPG,\n"2" - Провести стегоанализ директории\n"3" - Редактировать базу сигнатур\n"4" - Редактировать расписание проверок\n"0" - Завершить работу"\n-1" - Вернуться в главное меню\n')
+        print('"1" - Провести стегоанализ файла,\n"2" - Провести стегоанализ директории\n"3" - Редактировать базу сигнатур\n"4" - Редактировать расписание проверок\n"0" - Завершить работу"\n-1" - Вернуться в главное меню\n')
         user_input = input()
         if user_input not in ["-1", "0","1","2","3"]:
             print('Некорректный ввод. Ожидается число от -1 до 3')
@@ -306,10 +331,10 @@ def choose_object(object_type):
 
 def get_modes():
     modes = []
-    existing_modes = {"1":"Сигнатуры","2":"Секции","3":"Маркеры","4":"EXIF"}
+    existing_modes = {"1":"Сигнатуры","2":"Секции","3":"Маркеры","4":"EXIF", "5":"LSB"}
     mode_is_chosen = False
     while not(mode_is_chosen):
-        print('Введите через пробел список проверок, которые необходимо осуществить для файлов:\n"1" - Поиск сигнатур\n"2" - Проверка секций файла\n"3" - Проверка маркеров\n"4" - Проверка EXIF-тегов\n')
+        print('Введите через пробел список проверок, которые необходимо осуществить для файлов:\n"1" - Поиск сигнатур\n"2" - Проверка секций файла\n"3" - Проверка маркеров\n"4" - Проверка значений EXIF-тегов\n"5" - Неформатный анализ\n')
         user_input = list(input().split())
         has_invalid_mode = False
         for mode in user_input:
@@ -336,6 +361,10 @@ def get_modes():
     return modes
     
 
+def get_model_from_file(model_file):
+    with open(model_file, 'rb') as f:
+        clf_loaded = pickle.load(f)
+        return clf_loaded
 
 def create_archive(files_with_signatures):
     archive_filename = ''
@@ -569,36 +598,172 @@ def analyze_directory(folder_path, total_report, modes=["Сигнатуры","EX
         return [total_report, files_with_signatures]
     else:
         pass
+
+
+def get_lsb_from_file(filepath):
+    #print(filepath, filepath)
+    with open(filepath, 'rb') as file:
+
+        binValue = file.read()
+        hex_dict = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'a':10,'b':11,'c':12,'d':13,'e':14,'f':15}
+        encoded_file = base64.b64encode(binValue)
+        image_hex = base64.b64decode(encoded_file).hex()
+        #print(type(image_hex))
+        pixel_data_start = 2* (struct.unpack("<I", binValue[10:14])[0] - 1)
+
+        lsbit_list = []
+        pixel_data_end = get_pixel_data_end(filepath)*2
+
+        #print('start', pixel_data_start)
+        #print(pixel_data_end)
+        #print(len(image_hex))
+        amount = len(range(pixel_data_start + 1, pixel_data_end, 2))
+        #print(amount)
+        for i in range(pixel_data_start + 1, pixel_data_end, 2):
+            lsbit_list.append(hex_dict[image_hex[i]]%2)
+        #print(len(lsbit_list))
+        data_len = len(lsbit_list)//(2*8*3)
+
+        #print("data length:", data_len)
+        return lsbit_list
     
-def analyze_file(filename, check_list=["EXIF","Сигнатуры","Маркеры", "Секции"]):
-    ''' 
-    "Поиск по базе сигнатур":
-    {
-        {"Deegger Embedder v"}: "Нет".
-        {"Camouflage v123}:"Нет"
+
+def get_features_vector_from_lsb(lsb_list, attributes=('all')):
+    
+    e_lsb = 0
+    d_lsb = 0 
+    max_0_len = 0 
+    max_1_len = 0
+    count_0 = 0
+    count_1 = 0
+    diff_list = []
+    e_diff = 0
+    d_diff = 0 
+    diff_count_0 = 0
+    diff_count_1 = 0
+    cur_0_len = 0
+    cur_1_len = 0
+    zeros_dict = {}
+
+    for i in range(len(lsb_list)):
+        if i != 0:
+            cur_diff = abs(lsb_list[i] - lsb_list[i-1])
+            if cur_diff == 0:
+                diff_count_0 += 1
+            else:
+                diff_count_1 += 1
+            diff_list.append(cur_diff)
+        
+        if lsb_list[i] == 0:
+            count_0 += 1
+            cur_0_len += 1
+            cur_1_len = 0
+            if cur_0_len > max_0_len:
+                max_0_len = cur_0_len
+        elif lsb_list[i] == 1:
+            count_1 += 1
+            cur_0_len = 0 
+            cur_1_len += 1
+            if cur_1_len > max_1_len:
+                max_1_len = cur_1_len
+    #print(count_0)
+    #print(count_1)
+    #print()
+    #print(count_0, count_1, max_0_len,max_1_len,diff_count_0,diff_count_1)
+    p0_lsb = float(count_0)/len(lsb_list)
+    p1_lsb = float(count_1)/len(lsb_list)
+    p0_diff = float(diff_count_0)/(len(lsb_list)-1)
+    p1_diff = float(diff_count_1)/(len(lsb_list)-1)
+    e_lsb = round(p1_lsb, 3)
+    e_diff = round(p1_diff, 3)
+    d_lsb = round(p0_lsb * (e_lsb)**2 + p1_lsb*(1-e_lsb)**2, 3)
+    d_diff = round(p0_diff * (e_diff)**2 + p1_diff*(1-e_diff)**2, 3)
+    zeros = (''.join(map(str, lsb_list))).split('1')
+    zeros_frequence = {}
+    zeros_groups = 0 
+    e_zero_length = 0
+
+    for z in zeros:
+        if z != '':
+            zeros_frequence[len(z)] = zeros_frequence.get(len(z),0)+1
+            zeros_groups += 1
+    for k in zeros_frequence:
+        e_zero_length += k*float(zeros_frequence[k])/float(zeros_groups)
+    e_zero_length = round(e_zero_length, 3)
+    vector = []
+    attr_dict = {
+        'e_lsb':e_lsb,
+        'd_lsb':d_lsb,
+        'max_0_len':max_0_len,
+        'max_1_len':max_1_len,
+        'e_diff':e_diff,
+        'd_diff':d_diff, 
+        'e_zero_length':e_zero_length
     }
-    "Анализ полей формата":
-    {
-        "начало файла": нет
-        "секция комментариев": "нет"
-        "конец файла": нет,
-        "exif теги": нет
-    }
-    "Анализ информационных полей":
-    {
-        RS- анализ: нет 
-        WS-анализ: ...
-    }
-    '''
+    if attributes != ('all'):
+        for attr in attributes:
+            vector.append(attr_dict[attr])
+    else:
+        vector = [e_lsb,d_lsb,max_0_len,max_1_len,e_diff,d_diff, e_zero_length]
+
+    #return [max_0_len,max_1_len, e_zero_length]
+    #print(vector)
+    return vector
+
+
+
+
+
+
+
+
+def get_pixel_data_end(filename):
+    with open(filename, "rb") as f:
+        # Читаем BITMAPFILEHEADER (первые 14 байт)
+        file_header = f.read(14)
+
+        # Проверяем, что это BMP-файл (первые 2 байта должны быть "BM")
+        if file_header[:2] != b"BM":
+            raise ValueError("Это не BMP-файл.")
+
+        # Извлекаем смещение до данных пикселей (bfOffBits)
+        pixel_offset = struct.unpack("<I", file_header[10:14])[0]
+
+        # Читаем BITMAPINFOHEADER (следующие 40 байт)
+        info_header = f.read(40)
+
+        # Извлекаем ширину, высоту и глубину цвета
+        width = struct.unpack("<i", info_header[4:8])[0]  # Ширина (4 байта, смещение 4)
+        height = struct.unpack("<i", info_header[8:12])[0]  # Высота (4 байта, смещение 8)
+        bits_per_pixel = struct.unpack("<H", info_header[14:16])[0]  # Глубина цвета (2 байта, смещение 14)
+
+        # Вычисляем размер одной строки с учетом выравнивания
+        bytes_per_pixel = bits_per_pixel // 8
+        row_size = width * bytes_per_pixel
+        padding = (4 - (row_size % 4)) % 4  # Выравнивание до 4 байт
+        row_size_with_padding = row_size + padding
+
+        # Вычисляем общий размер данных пикселей
+        pixel_data_size = row_size_with_padding * height
+
+        # Вычисляем конец данных пикселей
+        pixel_data_end = pixel_offset + pixel_data_size 
+
+        return pixel_data_end
+
+
+def analyze_file(filename, check_list=["EXIF","Сигнатуры","Маркеры", "Секции","LSB"]):
+    
     copy_filename = filename 
     file_report = {}
     encoded_file = ''
     file_report['Анализ структуры файла'] = {}
     file_report["Поиск сигнатур"] = {}
     file_report["Общий анализ файла"] = {}
+    file_report["Анализ информационной части файла"] = {}
 
-    with open(filename, 'rb') as filename:
-        binValue = filename.read()
+    with open(filename, 'rb') as f:
+        binValue = f.read()
         encoded_file = base64.b64encode(binValue)
 
     image_hex = base64.b64decode(encoded_file).hex()
@@ -643,7 +808,19 @@ def analyze_file(filename, check_list=["EXIF","Сигнатуры","Маркер
         file_report["Общий анализ файла"]["Несоответствие расширения содержимому"] = "Да"
     else:
         file_report["Общий анализ файла"]["Несоответствие расширения содержимому"] = "Нет"
-    
+    if "LSB" in check_list:
+        #get_lsb_from_file(filename)
+        svm_clf = get_model_from_file('svm_clf.pkl')
+        
+        image_stats = [get_statistics(filename, attributes=['max_0_len','max_1_len'])]
+        #print(image_stats)
+        if svm_clf.predict(image_stats)[0]:
+            file_report["Анализ информационной части файла"]["Признаки LSB-стеганографии"] = "Да"
+        else:
+            file_report["Анализ информационной части файла"]["Признаки LSB-стеганографии"] = "Нет"
+
+        #errors = test_model(svm_clf, 'large_bmp_steg', 'full_lsb_steg_images')
+
     if "EXIF" in check_list or "Маркеры" in check_list:
         if "EXIF" in check_list:
             with open(copy_filename, 'rb') as image_file:
@@ -712,7 +889,7 @@ def convert_hexnum(hexstr):
 def test_performance():
     c = list(input().split())
     modes = []
-    existing_modes = {"1":"Сигнатуры","2":"Секции","3":"Маркеры","4":"EXIF"}
+    existing_modes = {"1":"Сигнатуры","2":"Секции","3":"Маркеры","4":"EXIF", "5":"LSB"}
     for mode in c:
         modes.append(existing_modes[mode])
     folder_selected = filedialog.askdirectory()
@@ -738,8 +915,6 @@ def start_schedules():
         elif arguments[0] == "weekly":
             pass 
         
-
-
 
 def main():
     import_signatures()
