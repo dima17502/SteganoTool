@@ -1,0 +1,584 @@
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.58125
+['d_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.63125
+['e_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.725
+['e_lsb', 'd_lsb', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.63125
+['e_lsb', 'd_lsb', 'max_0_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.6375
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'd_diff', 'e_zero_length']
+Accuracy: 0.63125
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'e_zero_length']
+Accuracy: 0.63125
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff']
+Accuracy: 0.625
+['max_0_len', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.61875
+['d_lsb', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.63125
+['d_lsb', 'max_0_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.65625
+['d_lsb', 'max_0_len', 'max_1_len', 'd_diff', 'e_zero_length']
+Accuracy: 0.7
+['d_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'e_zero_length']
+Accuracy: 0.5875
+['d_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff']
+Accuracy: 0.61875
+['e_lsb', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.64375
+['e_lsb', 'max_0_len', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.6125
+['e_lsb', 'max_0_len', 'max_1_len', 'd_diff', 'e_zero_length']
+Accuracy: 0.6125
+['e_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'e_zero_length']
+Accuracy: 0.68125
+['e_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff']
+Accuracy: 0.56875
+['e_lsb', 'd_lsb', 'e_diff', 'd_diff', 'e_zero_length']
+Accuracy: 0.59375
+['e_lsb', 'd_lsb', 'max_1_len', 'd_diff', 'e_zero_length']
+Accuracy: 0.59375
+['e_lsb', 'd_lsb', 'max_1_len', 'e_diff', 'e_zero_length']
+Accuracy: 0.6125
+['e_lsb', 'd_lsb', 'max_1_len', 'e_diff', 'd_diff']
+Accuracy: 0.6625
+['e_lsb', 'd_lsb', 'max_0_len', 'd_diff', 'e_zero_length']
+Accuracy: 0.58125
+['e_lsb', 'd_lsb', 'max_0_len', 'e_diff', 'e_zero_length']
+Accuracy: 0.6625
+['e_lsb', 'd_lsb', 'max_0_len', 'e_diff', 'd_diff']
+Accuracy: 0.6125
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_zero_length']
+Accuracy: 0.6625
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'd_diff']
+Accuracy: 0.61875
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.621875
+Accuracy on test set:  0.63125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.734375
+Accuracy on test set:  0.60625
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.625
+Accuracy on test set:  0.625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.74375
+Accuracy on test set:  0.65
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6203125
+Accuracy on test set:  0.64375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7375
+Accuracy on test set:  0.60625
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.615625
+Accuracy on test set:  0.6625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.73125
+Accuracy on test set:  0.625
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6296875
+Accuracy on test set:  0.6
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.725
+Accuracy on test set:  0.56875
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6265625
+Accuracy on test set:  0.6125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.746875
+Accuracy on test set:  0.58125
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6375
+Accuracy on test set:  0.56875
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.75
+Accuracy on test set:  0.5125
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.634375
+Accuracy on test set:  0.58125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7515625
+Accuracy on test set:  0.625
+----------------------------------------------------------------------------------------------------
+['max_0_len', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6125
+Accuracy on test set:  0.675
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7421875
+Accuracy on test set:  0.64375
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.628125
+Accuracy on test set:  0.6125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7453125
+Accuracy on test set:  0.6
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6265625
+Accuracy on test set:  0.61875
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7453125
+Accuracy on test set:  0.64375
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'max_1_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6234375
+Accuracy on test set:  0.63125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.771875
+Accuracy on test set:  0.63125
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6296875
+Accuracy on test set:  0.6
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.73125
+Accuracy on test set:  0.65
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.6109375
+Accuracy on test set:  0.675
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.775
+Accuracy on test set:  0.6375
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6296875
+Accuracy on test set:  0.60625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7375
+Accuracy on test set:  0.63125
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6375
+Accuracy on test set:  0.575
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.721875
+Accuracy on test set:  0.56875
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'max_1_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.625
+Accuracy on test set:  0.625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.75625
+Accuracy on test set:  0.58125
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6375
+Accuracy on test set:  0.575
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7234375
+Accuracy on test set:  0.6
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'max_1_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.6296875
+Accuracy on test set:  0.60625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7421875
+Accuracy on test set:  0.65625
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.628125
+Accuracy on test set:  0.6125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.678125
+Accuracy on test set:  0.55
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_1_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.634375
+Accuracy on test set:  0.5875
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7734375
+Accuracy on test set:  0.54375
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_1_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.625
+Accuracy on test set:  0.625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7390625
+Accuracy on test set:  0.5875
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_1_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.61875
+Accuracy on test set:  0.65
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7296875
+Accuracy on test set:  0.6
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.621875
+Accuracy on test set:  0.63125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.725
+Accuracy on test set:  0.55625
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6328125
+Accuracy on test set:  0.59375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.715625
+Accuracy on test set:  0.5625
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.6421875
+Accuracy on test set:  0.55625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7234375
+Accuracy on test set:  0.54375
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.628125
+Accuracy on test set:  0.60625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7546875
+Accuracy on test set:  0.54375
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.6265625
+Accuracy on test set:  0.6125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.759375
+Accuracy on test set:  0.61875
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'd_lsb', 'max_0_len', 'max_1_len', 'e_diff']
+
+SVM classifier:
+Accuracy on train set:  0.640625
+Accuracy on test set:  0.55625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7359375
+Accuracy on test set:  0.59375
+----------------------------------------------------------------------------------------------------
+['max_1_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.628125
+Accuracy on test set:  0.6125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7359375
+Accuracy on test set:  0.60625
+----------------------------------------------------------------------------------------------------
+['max_0_len', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6203125
+Accuracy on test set:  0.64375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7421875
+Accuracy on test set:  0.575
+----------------------------------------------------------------------------------------------------
+['max_0_len', 'max_1_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.615625
+Accuracy on test set:  0.6625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.740625
+Accuracy on test set:  0.6625
+----------------------------------------------------------------------------------------------------
+['max_0_len', 'max_1_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.621875
+Accuracy on test set:  0.6375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.753125
+Accuracy on test set:  0.61875
+----------------------------------------------------------------------------------------------------
+['max_0_len', 'max_1_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.6265625
+Accuracy on test set:  0.61875
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.753125
+Accuracy on test set:  0.65
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6328125
+Accuracy on test set:  0.59375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.70625
+Accuracy on test set:  0.53125
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_1_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.621875
+Accuracy on test set:  0.6375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7453125
+Accuracy on test set:  0.66875
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_1_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6109375
+Accuracy on test set:  0.68125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.746875
+Accuracy on test set:  0.6
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_1_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.61875
+Accuracy on test set:  0.65
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7609375
+Accuracy on test set:  0.61875
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6140625
+Accuracy on test set:  0.66875
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7484375
+Accuracy on test set:  0.63125
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6171875
+Accuracy on test set:  0.65625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7453125
+Accuracy on test set:  0.5625
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.621875
+Accuracy on test set:  0.6375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.74375
+Accuracy on test set:  0.6
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'max_1_len', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.61875
+Accuracy on test set:  0.64375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.75
+Accuracy on test set:  0.59375
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'max_1_len', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.628125
+Accuracy on test set:  0.60625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.75
+Accuracy on test set:  0.6875
+----------------------------------------------------------------------------------------------------
+['d_lsb', 'max_0_len', 'max_1_len', 'e_diff']
+
+SVM classifier:
+Accuracy on train set:  0.6046875
+Accuracy on test set:  0.7
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7890625
+Accuracy on test set:  0.64375
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'e_diff', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.625
+Accuracy on test set:  0.625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7171875
+Accuracy on test set:  0.5375
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_1_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6109375
+Accuracy on test set:  0.68125
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.734375
+Accuracy on test set:  0.53125
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_1_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6328125
+Accuracy on test set:  0.59375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7296875
+Accuracy on test set:  0.575
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_1_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.6375
+Accuracy on test set:  0.575
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7390625
+Accuracy on test set:  0.58125
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'd_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6140625
+Accuracy on test set:  0.66875
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.709375
+Accuracy on test set:  0.5625
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'e_diff', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6421875
+Accuracy on test set:  0.55625
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.70625
+Accuracy on test set:  0.5375
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'e_diff', 'd_diff']
+
+SVM classifier:
+Accuracy on train set:  0.634375
+Accuracy on test set:  0.5875
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7375
+Accuracy on test set:  0.5125
+----------------------------------------------------------------------------------------------------
+['e_lsb', 'max_0_len', 'max_1_len', 'e_zero_length']
+
+SVM classifier:
+Accuracy on train set:  0.6328125
+Accuracy on test set:  0.59375
+
+K-Nearest Neighbors classifier:
+Accuracy on train set:  0.7328125
+Accuracy on test set:  0.59375
