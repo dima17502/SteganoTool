@@ -1,12 +1,9 @@
 
 '''
-    Написать следующие функции:
-        - для определения размера текстового файла, который будет встраиваться
-        - функция для генерации случайных последовательностей печатных аски символов 
-        - 
+    Cкрипт для обучения моделей машинного обучения на основе метода k-ближайших соседей и метода опорных векторов
 
 '''
-#from pynput.mouse import Button, Controller
+
 import base64
 import struct
 import string
@@ -21,7 +18,7 @@ from sklearn.metrics import accuracy_score
 import pickle
 from itertools import chain, combinations
 
-#mouse = Controller()
+
 
 
 def generate_container():
@@ -70,11 +67,6 @@ def get_pixel_data_end(filename):
         pixel_data_end = pixel_offset + pixel_data_size 
 
         return pixel_data_end
-
-# Пример использования
-
-
- 
 
 def get_lsb_from_file(filepath):
     with open(filepath, 'rb') as file:
